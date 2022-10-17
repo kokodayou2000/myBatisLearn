@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace 是接口的全类名-->
+<mapper namespace="org.example.repository.ClassesRepository">
+
+    <resultMap id="classesMap" type="org.example.entity.Classes">
+        <id column="cid" property="id"/>
+        <result column="Cname" property="name"/>
+        <collection property="students" ofType="org.example.entity.Student">
+<!--            添加映射-->
+            <id column="sid" property="id"/>
+            <result column="sname" property="name"/>
+        </collection>
+    </resultMap>
+    
+    <select id="findById" parameterType="java.lang.Long" resultMap="classesMap">
+        select c.id as cid,s.id as sid, c.name as cname,s.name as sname  from student s ,classes c  where c.id = #{id}  and s.cid = c.id;
+    </select>
+
+
+</mapper>

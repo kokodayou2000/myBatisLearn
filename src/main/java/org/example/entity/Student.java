@@ -6,11 +6,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class Account {
-    private long id;
-    private String username;
-    private String password;
-    private int age;
+@NoArgsConstructor
+public class Student {
+    private Long id;
+    private String name;
+    private Classes classes;
 }
